@@ -12,11 +12,18 @@ const config = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
     "prettier"
   ],
-  plugins: ["@typescript-eslint", "react", "import", "unused-imports"],
+  plugins: [
+    "@typescript-eslint",
+    "react",
+    "react-hooks",
+    "import",
+    "unused-imports"
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
