@@ -7,7 +7,6 @@ import type {
 } from "plasmo"
 import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
-import { SWRConfig } from "swr"
 import {
   CommentsCounter,
   ErrorCommentsCounter,
@@ -59,13 +58,11 @@ export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
   if (!partId) return <ErrorCommentsCounter />
 
   return (
-    <SWRConfig value={{ provider: () => new Map() }}>
-      <ErrorBoundary fallback={<ErrorCommentsCounter />}>
-        <Suspense fallback={<LoadingCommentsCounter />}>
-          <CommentsCounter partId={partId} />
-        </Suspense>
-      </ErrorBoundary>
-    </SWRConfig>
+    <ErrorBoundary fallback={<ErrorCommentsCounter />}>
+      <Suspense fallback={<LoadingCommentsCounter />}>
+        <CommentsCounter partId={partId} />
+      </Suspense>
+    </ErrorBoundary>
   )
 }
 
