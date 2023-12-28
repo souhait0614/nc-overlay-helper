@@ -3,11 +3,22 @@ import { DAnimeApi } from "@NCOverlay/content_script/api/danime"
 import type { InitData } from "@NCOverlay/content_script/NCOverlay"
 import type { getSearchData } from "@NCOverlay/content_script/utils/getSearchData"
 import { loadCommentsNormal } from "@NCOverlay/content_script/utils/loadComments"
+import deepmerge from "deepmerge"
 
 import { NiconicoApi } from "api/niconico"
 import { Logger } from "utils/logger"
 
-export const getCommentsCount = async (partId: string) => {
+export interface GetCommentsCountOption {
+  useNgList?: boolean
+}
+const defaultGetCommentsCountOption = {
+  useNgList: false
+} as const satisfies Required<GetCommentsCountOption>
+export const getCommentsCount = async (
+  partId: string,
+  options: GetCommentsCountOption = {}
+) => {
+  const { useNgList } = deepmerge(defaultGetCommentsCountOption, options)
   const partData = await DAnimeApi.part(partId)
   Logger.debug("DAnimeApi.part", partData)
 
@@ -19,9 +30,6 @@ export const getCommentsCount = async (partId: string) => {
     duration: partData.partMeasureSecond
   }
   const initData: InitData[] = []
-
-  // TODO: 拡張機能の設定として実装する
-  const useNgList = false
 
   // 通常
   const normalInitData = await loadCommentsNormal(info, NiconicoApi, useNgList)

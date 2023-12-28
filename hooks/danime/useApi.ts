@@ -1,10 +1,16 @@
 import useSWR from "swr"
-import { getCommentsCount } from "utils/danime/getCommentsCount"
+import {
+  getCommentsCount,
+  type GetCommentsCountOption
+} from "utils/danime/getCommentsCount"
 
-export const useCommentsCount = (partId: string) => {
+export const useCommentsCount = (
+  partId: string,
+  option: GetCommentsCountOption = {}
+) => {
   return useSWR(
     `/danime/${partId}/commentsCount`,
-    () => getCommentsCount(partId),
+    () => getCommentsCount(partId, option),
     {
       suspense: true,
       revalidateOnFocus: false

@@ -1,16 +1,22 @@
 import { memo } from "react"
 import { useCommentsCount } from "hooks/danime/useApi"
 import { formatCommentsCount } from "utils/format"
+import type { GetCommentsCountOption } from "~utils/danime/getCommentsCount"
 
 const containerClassName = "counter"
 
 interface CommentsCounterProps {
   partId: string
   hideKawaiiCount?: boolean
+  getCommentsCountOption?: GetCommentsCountOption
 }
 export const CommentsCounter = memo(
-  ({ partId, hideKawaiiCount }: CommentsCounterProps) => {
-    const { data } = useCommentsCount(partId)
+  ({
+    partId,
+    hideKawaiiCount,
+    getCommentsCountOption = {}
+  }: CommentsCounterProps) => {
+    const { data } = useCommentsCount(partId, getCommentsCountOption)
     return (
       <div className={containerClassName}>
         {data ? (
