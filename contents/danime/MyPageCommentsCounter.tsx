@@ -12,6 +12,7 @@ import {
   ErrorCommentsCounter,
   LoadingCommentsCounter
 } from "components/danime/CommentsCounter"
+import { useSettings } from "hooks/useSettings"
 
 export const config: PlasmoCSConfig = {
   matches: [
@@ -54,13 +55,15 @@ export const getStyle = () => {
 }
 
 export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
+  const [{ hideKawaiiCount }] = useSettings()
+
   const partId = anchor?.element.getAttribute(dataPartIdAttr)
   if (!partId) return <ErrorCommentsCounter />
 
   return (
     <ErrorBoundary fallback={<ErrorCommentsCounter />}>
       <Suspense fallback={<LoadingCommentsCounter />}>
-        <CommentsCounter partId={partId} />
+        <CommentsCounter partId={partId} hideKawaiiCount={hideKawaiiCount} />
       </Suspense>
     </ErrorBoundary>
   )
