@@ -9,5 +9,5 @@ export default {
   singleQuote: false,
   trailingComma: "none",
   bracketSpacing: true,
-  bracketSameLine: true,
+  bracketSameLine: true
 }
