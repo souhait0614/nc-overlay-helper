@@ -13,6 +13,9 @@ import {
   LoadingCommentsCounter
 } from "components/danime/CommentsCounter"
 import { useSettings } from "hooks/useSettings"
+import { Logger as NCOverlayLogger } from "@NCOverlay/utils/logger"
+
+NCOverlayLogger.logLevel = 2
 
 export const config: PlasmoCSConfig = {
   matches: [
