@@ -106,6 +106,9 @@ importers:
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
+      '@types/node':
+        specifier: ^20.10.5
+        version: 20.10.5
       '@types/webextension-polyfill':
         specifier: ^0.10.7
         version: 0.10.7
