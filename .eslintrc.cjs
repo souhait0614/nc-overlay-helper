@@ -56,6 +56,32 @@ const config = {
       }
     ],
     "import/no-unresolved": "off",
+    "import/order": [
+      "warn",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "unknown",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always",
+        alphabetize: { order: "asc", caseInsensitive: true }
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "warn",
+      {
+        prefer: "type-imports",
+        fixStyle: "separate-type-imports"
+      }
+    ],
+    "import/consistent-type-specifier-style": ["warn", "prefer-top-level"],
     "react/display-name": "off"
   }
 }
