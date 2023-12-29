@@ -2,7 +2,7 @@ import { useCommentsCount } from "hooks/danime/useApi"
 import { memo } from "react"
 import { formatCommentsCount } from "utils/format"
 
-import type { GetCommentsCountOption } from "~utils/danime/getCommentsCount"
+import type { GetCommentsCountOption } from "utils/danime/getCommentsCount"
 
 const containerClassName = "counter"
 
