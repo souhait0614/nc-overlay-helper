@@ -13,7 +13,8 @@ export const useCommentsCount = (
     () => getCommentsCount(partId, option),
     {
       suspense: true,
-      revalidateOnFocus: false
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false
     }
   )
 }
