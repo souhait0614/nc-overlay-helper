@@ -9,10 +9,11 @@ export const useCommentsCount = (
   option: GetCommentsCountOption = {}
 ) => {
   return useSWR(
-    `/danime/${partId}/commentsCount`,
+    `/danime/${partId}/commentsCount/${JSON.stringify(option)}`,
     () => getCommentsCount(partId, option),
     {
       suspense: true,
+      revalidateIfStale: false,
       revalidateOnFocus: false,
       revalidateOnReconnect: false
     }
