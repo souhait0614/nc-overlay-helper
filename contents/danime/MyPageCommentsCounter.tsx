@@ -58,7 +58,8 @@ export const getStyle = () => {
 }
 
 export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const [{ hideKawaiiCount, useNgList, strictMatch }] = useSettings()
+  const [{ hideKawaiiCount, useNgList, strictMatch, szbhMethod }] =
+    useSettings()
 
   const partId = anchor?.element.getAttribute(dataPartIdAttr)
   if (!partId) return <ErrorCommentsCounter />
@@ -71,7 +72,8 @@ export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
           hideKawaiiCount={hideKawaiiCount}
           getCommentsCountOption={{
             useNgList,
-            strictMatch
+            strictMatch,
+            szbhMethod
           }}
         />
       </Suspense>

@@ -2,7 +2,10 @@ import { KAWAII_REGEXP } from "@NCOverlay/constants"
 import { DAnimeApi } from "@NCOverlay/content_script/api/danime"
 import type { InitData } from "@NCOverlay/content_script/NCOverlay"
 import type { getSearchData } from "@NCOverlay/content_script/utils/getSearchData"
-import { loadCommentsNormal } from "@NCOverlay/content_script/utils/loadComments"
+import {
+  loadCommentsNormal,
+  loadCommentsSZBH
+} from "@NCOverlay/content_script/utils/loadComments"
 import deepmerge from "deepmerge"
 
 import { NiconicoApi } from "api/niconico"
@@ -11,16 +14,18 @@ import { Logger } from "utils/logger"
 export interface GetCommentsCountOption {
   useNgList?: boolean
   strictMatch?: boolean
+  szbhMethod?: boolean
 }
 const defaultGetCommentsCountOption = {
   useNgList: false,
-  strictMatch: false
+  strictMatch: false,
+  szbhMethod: false
 } as const satisfies Required<GetCommentsCountOption>
 export const getCommentsCount = async (
   partId: string,
   options: GetCommentsCountOption = {}
 ) => {
-  const { useNgList, strictMatch } = deepmerge(
+  const { useNgList, strictMatch, szbhMethod } = deepmerge(
     defaultGetCommentsCountOption,
     options
   )
@@ -40,6 +45,10 @@ export const getCommentsCount = async (
   // 通常
   const normalInitData = await loadCommentsNormal(info, NiconicoApi, useNgList)
   initData.push(...normalInitData)
+  if (szbhMethod) {
+    const szbhInitData = await loadCommentsSZBH(info, NiconicoApi, useNgList)
+    initData.push(...szbhInitData)
+  }
   Logger.debug("initData", info.title, initData)
 
   const threads = initData
