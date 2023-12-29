@@ -10,15 +10,20 @@ import { Logger } from "utils/logger"
 
 export interface GetCommentsCountOption {
   useNgList?: boolean
+  strictMatch?: boolean
 }
 const defaultGetCommentsCountOption = {
-  useNgList: false
+  useNgList: false,
+  strictMatch: false
 } as const satisfies Required<GetCommentsCountOption>
 export const getCommentsCount = async (
   partId: string,
   options: GetCommentsCountOption = {}
 ) => {
-  const { useNgList } = deepmerge(defaultGetCommentsCountOption, options)
+  const { useNgList, strictMatch } = deepmerge(
+    defaultGetCommentsCountOption,
+    options
+  )
   const partData = await DAnimeApi.part(partId)
   Logger.debug("DAnimeApi.part", partData)
 
@@ -27,7 +32,8 @@ export const getCommentsCount = async (
 
   const info: Parameters<typeof getSearchData>[0] = {
     title: partData.title,
-    duration: partData.partMeasureSecond
+    duration: partData.partMeasureSecond,
+    strictMatch
   }
   const initData: InitData[] = []
 
