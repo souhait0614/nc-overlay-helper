@@ -35,7 +35,6 @@ export const mountShadowHost: PlasmoMountShadowHost = async ({
   anchor,
   shadowHost
 }) => {
-  // console.log(anchor)
   if (!anchor) return
   const link =
     anchor.element.querySelector<HTMLAnchorElement>("a.textContainer")
@@ -58,8 +57,17 @@ export const getStyle = () => {
 }
 
 export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const [{ hideKawaiiCount, useNgList, strictMatch, szbhMethod }] =
-    useSettings()
+  const [settings] = useSettings()
+  if (!settings) return
+
+  const {
+    enabledCommentCounter,
+    hideKawaiiCount,
+    useNgList,
+    strictMatch,
+    szbhMethod
+  } = settings
+  if (!enabledCommentCounter) return
 
   const partId = anchor?.element.getAttribute(dataPartIdAttr)
   if (!partId) return <ErrorCommentsCounter />

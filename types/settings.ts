@@ -1,4 +1,5 @@
 export interface Settings {
+  enabledCommentCounter: boolean
   hideKawaiiCount: boolean
   useNgList: boolean
   strictMatch: boolean
@@ -6,6 +7,7 @@ export interface Settings {
 }
 
 export const defaultSettings = {
+  enabledCommentCounter: true,
   hideKawaiiCount: false,
   useNgList: false,
   strictMatch: false,
