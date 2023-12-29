@@ -63,7 +63,7 @@ export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
 
   const {
     enabledCommentCounter,
-    hideKawaiiCount,
+    showKawaiiCount,
     useNgList,
     strictMatch,
     szbhMethod
@@ -78,7 +78,7 @@ export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
       <Suspense fallback={<LoadingCommentsCounter />}>
         <CommentsCounter
           partId={partId}
-          hideKawaiiCount={hideKawaiiCount}
+          showKawaiiCount={showKawaiiCount}
           getCommentsCountOption={{
             useNgList,
             strictMatch,

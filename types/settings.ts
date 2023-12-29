@@ -1,6 +1,6 @@
 export interface Settings {
   enabledCommentCounter: boolean
-  hideKawaiiCount: boolean
+  showKawaiiCount: boolean
   useNgList: boolean
   strictMatch: boolean
   szbhMethod: boolean
@@ -8,7 +8,7 @@ export interface Settings {
 
 export const defaultSettings = {
   enabledCommentCounter: true,
-  hideKawaiiCount: false,
+  showKawaiiCount: true,
   useNgList: false,
   strictMatch: false,
   szbhMethod: false

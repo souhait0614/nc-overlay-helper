@@ -8,13 +8,13 @@ const containerClassName = "counter"
 
 interface CommentsCounterProps {
   partId: string
-  hideKawaiiCount?: boolean
+  showKawaiiCount?: boolean
   getCommentsCountOption?: GetCommentsCountOption
 }
 export const CommentsCounter = memo(
   ({
     partId,
-    hideKawaiiCount,
+    showKawaiiCount,
     getCommentsCountOption = {}
   }: CommentsCounterProps) => {
     const { data } = useCommentsCount(partId, getCommentsCountOption)
@@ -24,7 +24,7 @@ export const CommentsCounter = memo(
           <dl>
             <dt>コメント</dt>
             <dd>{formatCommentsCount(data[0])}</dd>
-            {!hideKawaiiCount && (
+            {showKawaiiCount && (
               <>
                 <dt>かわいい</dt>
                 <dd>{formatCommentsCount(data[1])}</dd>
