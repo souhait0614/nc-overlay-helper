@@ -3,10 +3,8 @@ import { useCallback } from "react"
 import { defaultSettings, type Settings } from "types/settings"
 
 export const useSettings = () => {
-  const [settings, setSettings] = useStorage<Settings>(
-    "settings",
-    () => defaultSettings
-  )
+  const [settings = defaultSettings, setSettings] =
+    useStorage<Settings>("settings")
   const setSetting = useCallback(
     (key: keyof Settings, value: Settings[typeof key]) => {
       setSettings({
