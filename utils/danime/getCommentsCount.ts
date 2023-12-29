@@ -1,15 +1,15 @@
 import { KAWAII_REGEXP } from "@NCOverlay/constants"
 import { DAnimeApi } from "@NCOverlay/content_script/api/danime"
-import type { InitData } from "@NCOverlay/content_script/NCOverlay"
-import type { getSearchData } from "@NCOverlay/content_script/utils/getSearchData"
 import {
   loadCommentsNormal,
   loadCommentsSZBH
 } from "@NCOverlay/content_script/utils/loadComments"
-import deepmerge from "deepmerge"
-
 import { NiconicoApi } from "api/niconico"
+import deepmerge from "deepmerge"
 import { Logger } from "utils/logger"
+
+import type { InitData } from "@NCOverlay/content_script/NCOverlay"
+import type { getSearchData } from "@NCOverlay/content_script/utils/getSearchData"
 
 export interface GetCommentsCountOption {
   useNgList?: boolean

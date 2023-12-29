@@ -1,19 +1,20 @@
+import { Logger as NCOverlayLogger } from "@NCOverlay/utils/logger"
+import {
+  CommentsCounter,
+  ErrorCommentsCounter,
+  LoadingCommentsCounter
+} from "components/danime/CommentsCounter"
 import css from "data-text:components/danime/CommentsCounter.scss"
+import { useSettings } from "hooks/useSettings"
+import { Suspense } from "react"
+import { ErrorBoundary } from "react-error-boundary"
+
 import type {
   PlasmoCSConfig,
   PlasmoCSUIProps,
   PlasmoGetInlineAnchorList,
   PlasmoMountShadowHost
 } from "plasmo"
-import { Suspense } from "react"
-import { ErrorBoundary } from "react-error-boundary"
-import {
-  CommentsCounter,
-  ErrorCommentsCounter,
-  LoadingCommentsCounter
-} from "components/danime/CommentsCounter"
-import { useSettings } from "hooks/useSettings"
-import { Logger as NCOverlayLogger } from "@NCOverlay/utils/logger"
 
 NCOverlayLogger.logLevel = 2
 

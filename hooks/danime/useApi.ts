@@ -1,8 +1,7 @@
 import useSWR from "swr"
-import {
-  getCommentsCount,
-  type GetCommentsCountOption
-} from "utils/danime/getCommentsCount"
+import { getCommentsCount } from "utils/danime/getCommentsCount"
+
+import type { GetCommentsCountOption } from "utils/danime/getCommentsCount"
 
 export const useCommentsCount = (
   partId: string,

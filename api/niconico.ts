@@ -1,10 +1,10 @@
+import { sendToBackground } from "@plasmohq/messaging"
+import { Logger } from "utils/logger"
+
 import type { search } from "@NCOverlay/background/api/niconico/search"
 import type { threads } from "@NCOverlay/background/api/niconico/threads"
 import type { video } from "@NCOverlay/background/api/niconico/video"
-
-import { sendToBackground, type MessageName } from "@plasmohq/messaging"
-
-import { Logger } from "utils/logger"
+import type { MessageName } from "@plasmohq/messaging"
 
 export interface MessageType {
   "niconico/search": {

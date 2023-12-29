@@ -1,7 +1,9 @@
 import { useStorage } from "@plasmohq/storage/hook"
-import { useCallback, useMemo } from "react"
-import { defaultSettings, type Settings } from "types/settings"
 import deepmerge from "deepmerge"
+import { useCallback, useMemo } from "react"
+import { defaultSettings } from "types/settings"
+
+import type { Settings } from "types/settings"
 
 export const useSettings = () => {
   const [storageSettings, setStorageSettings] = useStorage<
