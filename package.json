@@ -8,8 +8,8 @@
     "dev": "plasmo dev",
     "build": "plasmo build",
     "test": "plasmo test",
-    "lint": "eslint '**/*.{ts, tsx}'",
-    "format": "eslint --fix '**/*.{ts, tsx}' && prettier --write '**/*.{js, cjs, mjs, ts, tsx, json}'"
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "format": "eslint --fix '**/*.{ts,tsx}' && prettier --write '**/*.{js,cjs,mjs,ts,tsx,json}'"
   },
   "dependencies": {
     "@plasmohq/messaging": "^0.6.1",
