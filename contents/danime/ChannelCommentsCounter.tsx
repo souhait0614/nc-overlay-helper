@@ -53,8 +53,8 @@ export const getStyle = () => {
 }
 
 export const ChannelCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const [settings] = useSettings()
-  if (!settings) return
+  const { settings, loading } = useSettings()
+  if (loading) return
 
   const {
     enabledCommentCounter,
