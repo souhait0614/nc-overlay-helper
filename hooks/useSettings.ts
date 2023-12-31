@@ -6,7 +6,20 @@ import { useStorage } from "./useStorage"
 
 import type { Settings } from "types/settings"
 
-export const useSettings = () => {
+export type UseSettingsReturnValues =
+  | {
+      settings: Settings
+      setSetting: (key: keyof Settings, value: boolean) => void
+      resetSettings: () => void
+      loading: false
+    }
+  | {
+      settings: undefined
+      setSetting: (key: keyof Settings, value: boolean) => void
+      resetSettings: () => void
+      loading: true
+    }
+export const useSettings = (): UseSettingsReturnValues => {
   const { data, setData, loading } = useStorage<Settings>("settings")
 
   const settings = useMemo(
@@ -31,5 +44,17 @@ export const useSettings = () => {
   const resetSettings = useCallback(() => {
     setData(undefined)
   }, [setData])
-  return [settings, setSetting, resetSettings] as const
+  return !loading
+    ? {
+        settings: settings ?? defaultSettings,
+        setSetting,
+        resetSettings,
+        loading
+      }
+    : {
+        settings: undefined,
+        setSetting,
+        resetSettings,
+        loading
+      }
 }

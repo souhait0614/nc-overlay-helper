@@ -58,8 +58,8 @@ export const getStyle = () => {
 }
 
 export const MyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const [settings] = useSettings()
-  if (!settings) return
+  const { settings, loading } = useSettings()
+  if (loading) return
 
   const {
     enabledCommentCounter,

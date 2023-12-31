@@ -15,7 +15,7 @@ const ResetSettingsIcon = memo(() => (
 ))
 
 export const ResetSettings = memo(() => {
-  const [, , resetSettings] = useSettings()
+  const { resetSettings } = useSettings()
   const handleResetSettings = useCallback(() => {
     if (confirm("設定をリセットしますか？")) {
       resetSettings()

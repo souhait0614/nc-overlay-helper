@@ -54,8 +54,8 @@ const ListCheckbox = memo(
 )
 
 export const Settings = () => {
-  const [settings, setSetting] = useSettings()
-  if (!settings) return <div>よみこみちゅう</div>
+  const { settings, setSetting, loading } = useSettings()
+  if (loading) return <div>よみこみちゅう</div>
   const {
     enabledCommentCounter,
     showKawaiiCount,
