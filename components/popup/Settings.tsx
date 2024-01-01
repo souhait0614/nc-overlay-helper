@@ -88,7 +88,7 @@ export const Settings = () => {
                 onChange={(e) => setSetting("strictMatch", e.target.checked)}
               />
               <ListCheckbox
-                label="コメント専用動画のコメントを表示"
+                label="コメント専用動画のコメント数を含める"
                 checked={szbhMethod}
                 onChange={(e) => setSetting("szbhMethod", e.target.checked)}
               />
