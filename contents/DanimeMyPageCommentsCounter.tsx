@@ -19,12 +19,16 @@ import type {
 NCOverlayLogger.logLevel = 2
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://animestore.docomo.ne.jp/animestore/ci_pc*"],
+  matches: [
+    "https://animestore.docomo.ne.jp/animestore/mp_viw_pc*",
+    "https://animestore.docomo.ne.jp/animestore/mpa_fav_pc*",
+    "https://animestore.docomo.ne.jp/animestore/mpa_hst_pc*"
+  ],
   run_at: "document_start"
 }
 
 export const getInlineAnchorList: PlasmoGetInlineAnchorList = () =>
-  document.querySelectorAll(".episodeContainer.itemWrapper .itemModule.list")
+  document.querySelectorAll(".itemWrapper .itemModule.list .itemModuleIn")
 
 const dataPartIdAttr = "data-nc-overlay-helper-part-id"
 
@@ -33,8 +37,9 @@ export const mountShadowHost: PlasmoMountShadowHost = async ({
   shadowHost
 }) => {
   if (!anchor) return
-  const link = anchor.element.querySelector<HTMLAnchorElement>("a")
-  const thumbnail = anchor.element.querySelector(".thumbnailContainer")
+  const link =
+    anchor.element.querySelector<HTMLAnchorElement>("a.textContainer")
+  const thumbnail = anchor.element.querySelector(".thumbnailContainer a")
   if (!link || !link.href || !thumbnail) return
   if (!thumbnail) return
 
@@ -52,7 +57,7 @@ export const getStyle = () => {
   return style
 }
 
-export const ChannelCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
+export const DanimeMyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
   const { settings, loading } = useSettings()
   if (loading) return
 
@@ -85,4 +90,4 @@ export const ChannelCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
   )
 }
 
-export default ChannelCommentsCounter
+export default DanimeMyPageCommentsCounter
