@@ -42,6 +42,16 @@
   "manifest": {
     "host_permissions": [
       "https://*/*"
-    ]
+    ],
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "ncoverlayhelper@souhait.me",
+        "strict_min_version": "113.0"
+      },
+      "gecko_android": {
+        "id": "ncoverlayhelper@souhait.me",
+        "strict_min_version": "113.0"
+      }
+    }
   }
 }
