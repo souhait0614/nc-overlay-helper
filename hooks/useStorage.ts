@@ -22,10 +22,6 @@ export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
   const [loading, setLoading] = useState(true)
   const storage = useMemo(() => new Storage(), [])
 
-  useEffect(() => {
-    console.log(data, loading)
-  }, [data, loading])
-
   const setStorageData = useCallback<SetDataDispatch<T>>(
     (setStateAction) => {
       if (typeof setStateAction === "function") {
