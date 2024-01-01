@@ -1,33 +1,49 @@
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+# <sub><img src="assets/icon.png" width="30px" height="30px" alt="NCOverlayHelper Logo"></sub> NCOverlayHelper
 
-## Getting Started
+## 概要
 
-First, run the development server:
+[NCOverlay](https://github.com/Midra429/NCOverlay)本体に追加するまでもないけど個人的にほしい機能を足す拡張機能です。
 
-```bash
-pnpm dev
-# or
-npm run dev
-```
+NCOverlayHelper単体でも使用できると思いますが、[NCOverlay](https://github.com/Midra429/NCOverlay)との併用をオススメします。
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+## 対応している動画配信サービス
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+- [dアニメストア](https://animestore.docomo.ne.jp/animestore/)
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+※ 増減する可能性あり<br>
+※ dアニメストア以外に対応する可能性は薄いです
 
-## Making production build
+## 機能・使い方
 
-Run the following:
+### 一覧画面でのコメント数表示
 
-```bash
-pnpm build
-# or
-npm run build
-```
+<img src="https://github.com/souhait0614/nc-overlay-helper/assets/62732828/5645d6d9-54f8-45b4-ad09-0a967092c031" height="150px" alt="コメント数表示例">
 
-This should create a production bundle for your extension, ready to be zipped and published to the stores.
+動画情報にコメント数を表示します。<br>
+[NCOverlay](https://github.com/Midra429/NCOverlay)のコメント取得処理を使用しているため、コメント専用動画のカウントやニコニコのNG設定の使用もできます。(設定の詳細は[ポップアップ](#ポップアップ)へ)
 
-## Submit to the webstores
+コメント数は自動で取得・表示されるので何もしなくてOK。<br>
+dアニメストア ニコニコ支店のコメントを取得・表示するには、同じブラウザでニコニコにログインしてください。<br>
 
-The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!
+### ポップアップ
+
+NCOverlayHelperの各機能の設定を行えます。<br>
+一部設定は[NCOverlay](https://github.com/Midra429/NCOverlay)の設定と同名または同等の機能("ニコニコのNG設定を使用"など)ですが、**NCOverlayの設定とは別で設定**する必要があります。
+
+- コメントカウンター
+  - 機能の有効化/無効化
+  - かわいいカウントを表示
+  - タイトルの一致判定を厳密にする
+  - コメント専用動画のコメント数を含める
+  - ニコニコのNG設定を使用 (要ログイン)
+
+## 不具合報告・機能提案など
+
+- GitHubの[Issues](https://github.com/souhait0614/nc-overlay-helper/issues)
+- SNSアカウント宛にメッセージやメンション
+  - Misskey: [@souhait@submarin.online](https://submarin.online/@souhait)
+  - X (Twitter): [@ElectronicsBot](https://x.com/ElectronicsBot)
+
+## ライセンス
+
+当ライセンスは[MIT](LICENSE)ライセンスの規約に基づいて付与されています。
