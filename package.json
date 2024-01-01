@@ -6,7 +6,9 @@
   "author": "souhait <souhait.0614@gmail.com>",
   "scripts": {
     "dev": "plasmo dev",
-    "build": "plasmo build",
+    "build:chrome": "plasmo build --target=chrome-mv3 --zip",
+    "build:firefox": "plasmo build --target=firefox-mv3 --zip",
+    "build": "run-s build:*",
     "test": "plasmo test",
     "lint": "eslint '**/*.{ts,tsx}'",
     "format": "eslint --fix '**/*.{ts,tsx}' && prettier --write '**/*.{js,cjs,mjs,ts,tsx,json}'"
@@ -35,6 +37,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "npm-run-all2": "^6.1.1",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3",
     "typescript-plugin-css-modules": "^5.0.2"
