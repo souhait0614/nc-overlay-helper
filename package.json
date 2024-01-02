@@ -9,7 +9,7 @@
     "build:chrome": "plasmo build --target=chrome-mv3 --zip",
     "build:firefox": "plasmo build --target=firefox-mv3 --zip",
     "build": "run-s build:*",
-    "lint": "eslint '**/*.{ts,tsx}'",
+    "lint": "tsc --build && eslint '**/*.{ts,tsx}'",
     "format": "eslint --fix '**/*.{ts,tsx}' && prettier --write '**/*.{js,cjs,mjs,ts,tsx,json}'"
   },
   "dependencies": {
