@@ -10,7 +10,7 @@
     "build:firefox": "plasmo build --target=firefox-mv3 --zip",
     "build": "run-s build:*",
     "lint": "tsc --build && eslint '**/*.{ts,tsx}'",
-    "format": "eslint --fix '**/*.{ts,tsx}' && prettier --write '**/*.{js,cjs,mjs,ts,tsx,json}'"
+    "format": "eslint --fix '**/*.{ts,tsx}' && prettier --write '**/*.{js,cjs,mjs,ts,tsx,json,css,scss}'"
   },
   "dependencies": {
     "@plasmohq/messaging": "^0.6.1",
