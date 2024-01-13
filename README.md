@@ -1,5 +1,10 @@
 # <sub><img src="assets/icon.png" width="30px" height="30px" alt="NCOverlayHelper Logo"></sub> NCOverlayHelper
 
+[![GitHub Release](https://img.shields.io/github/v/release/souhait0614/nc-overlay-helper?label=Releases)](https://github.com/souhait0614/nc-overlay-helper/releases)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/lkhmoihbofhalomfbejikpapobebjjcj?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj)
+
+[<img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" height="60px" alt="Available in the Chrome Web Store">](https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj)
+
 ## 概要
 
 [NCOverlay](https://github.com/Midra429/NCOverlay)本体に追加するまでもないけど個人的にほしい機能を足す拡張機能です。
@@ -36,6 +41,12 @@ NCOverlayHelperの各機能の設定を行えます。<br>
   - タイトルの一致判定を厳密にする
   - コメント専用動画のコメント数を含める
   - ニコニコのNG設定を使用 (要ログイン)
+
+## インストール
+
+### Chrome Web Store
+
+<https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj>
 
 ## 不具合報告・機能提案など
 
