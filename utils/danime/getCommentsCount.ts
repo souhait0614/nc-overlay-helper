@@ -1,15 +1,20 @@
 import { KAWAII_REGEXP } from "@NCOverlay/constants"
-import { DAnimeApi } from "@NCOverlay/content_script/api/danime"
 import {
   loadCommentsNormal,
   loadCommentsSZBH
 } from "@NCOverlay/content_script/utils/loadComments"
 import { NiconicoApi } from "api/niconico"
+import { Mutex } from "async-mutex"
 import deepmerge from "deepmerge"
+import { decodeHTML } from "entities"
 import { Logger } from "utils/logger"
+
+import { DAnimeApi } from "~api/danime"
 
 import type { InitData } from "@NCOverlay/content_script/NCOverlay"
 import type { getSearchData } from "@NCOverlay/content_script/utils/getSearchData"
+
+const mutex = new Mutex()
 
 export interface GetCommentsCountOption {
   useNgList?: boolean
@@ -29,15 +34,33 @@ export const getCommentsCount = async (
     defaultGetCommentsCountOption,
     options
   )
+
+  await mutex.waitForUnlock()
+  const release = await mutex.acquire()
   const partData = await DAnimeApi.part(partId)
   Logger.debug("DAnimeApi.part", partData)
+  release()
 
   if (!partData) return null
-  Logger.debug("title", partData.title)
+
+  const title = decodeHTML(
+    `${partData.workTitle} ${partData.partDispNumber} ${partData.partTitle}`.trim()
+  )
+  Logger.debug("title", title)
+
+  let partMeasureSecond = 0
+  const { sec, min } =
+    partData.partMeasure.match(/^((?<min>\d+)分)*((?<sec>\d+)秒)*$/)?.groups ??
+    {}
+  if (sec) partMeasureSecond += parseInt(sec, 10)
+  if (min) partMeasureSecond += parseInt(min, 10) * 60
+  Logger.debug("partMeasureSecond", partMeasureSecond)
+
+  if (!title || !partMeasureSecond) return null
 
   const info: Parameters<typeof getSearchData>[0] = {
-    title: partData.title,
-    duration: partData.partMeasureSecond,
+    title,
+    duration: partMeasureSecond,
     strictMatch
   }
   const initData: InitData[] = []
