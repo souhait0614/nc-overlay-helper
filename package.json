@@ -42,7 +42,8 @@
   },
   "manifest": {
     "host_permissions": [
-      "https://*/*"
+      "https://*.nicovideo.jp/*",
+      "https://animestore.docomo.ne.jp/*"
     ],
     "browser_specific_settings": {
       "gecko": {
