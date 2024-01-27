@@ -1,4 +1,4 @@
-import { part } from './part'
+import { part } from "./part"
 
 export const DAnimeApi = {
   part,

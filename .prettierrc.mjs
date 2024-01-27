@@ -9,5 +9,5 @@ export default {
   singleQuote: false,
   trailingComma: "es5",
   bracketSpacing: true,
-  bracketSameLine: false
+  bracketSameLine: false,
 }

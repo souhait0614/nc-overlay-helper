@@ -2,7 +2,7 @@ import { Logger as NCOverlayLogger } from "@NCOverlay/utils/logger"
 import {
   CommentsCounter,
   ErrorCommentsCounter,
-  LoadingCommentsCounter
+  LoadingCommentsCounter,
 } from "components/danime/CommentsCounter"
 import css from "data-text:components/danime/CommentsCounter.scss"
 import { useSettings } from "hooks/useSettings"
@@ -13,7 +13,7 @@ import type {
   PlasmoCSConfig,
   PlasmoCSUIProps,
   PlasmoGetInlineAnchorList,
-  PlasmoMountShadowHost
+  PlasmoMountShadowHost,
 } from "plasmo"
 
 NCOverlayLogger.logLevel = 2
@@ -22,9 +22,9 @@ export const config: PlasmoCSConfig = {
   matches: [
     "https://animestore.docomo.ne.jp/animestore/mp_viw_pc*",
     "https://animestore.docomo.ne.jp/animestore/mpa_fav_pc*",
-    "https://animestore.docomo.ne.jp/animestore/mpa_hst_pc*"
+    "https://animestore.docomo.ne.jp/animestore/mpa_hst_pc*",
   ],
-  run_at: "document_start"
+  run_at: "document_start",
 }
 
 export const getInlineAnchorList: PlasmoGetInlineAnchorList = () =>
@@ -34,7 +34,7 @@ const dataPartIdAttr = "data-nc-overlay-helper-part-id"
 
 export const mountShadowHost: PlasmoMountShadowHost = async ({
   anchor,
-  shadowHost
+  shadowHost,
 }) => {
   if (!anchor) return
   const link =
@@ -66,7 +66,7 @@ export const DanimeMyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
     showKawaiiCount,
     useNgList,
     strictMatch,
-    szbhMethod
+    szbhMethod,
   } = settings
   if (!enabledCommentCounter) return
 
@@ -82,7 +82,7 @@ export const DanimeMyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
           getCommentsCountOption={{
             useNgList,
             strictMatch,
-            szbhMethod
+            szbhMethod,
           }}
         />
       </Suspense>

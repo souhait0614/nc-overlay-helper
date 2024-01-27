@@ -30,7 +30,7 @@ const proxy = async <T extends MessageName>(
     MessageType[T]["result"] | null
   >({
     name,
-    body
+    body,
   })
   Logger.debug("res", name, body, res)
 
@@ -50,5 +50,5 @@ export const NiconicoApi = {
   },
   threads: (body: MessageType["niconico/threads"]["body"]) => {
     return proxy("niconico/threads", body)
-  }
+  },
 }

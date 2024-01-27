@@ -43,7 +43,7 @@ export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
       [key]: ({ newValue }) => {
         setData(newValue)
         setLoading(false)
-      }
+      },
     }
     storage.watch(callbackMap)
     storage.get<T>(key).then((value) => {
@@ -59,11 +59,11 @@ export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
     ? {
         data: undefined,
         setData: setStorageData,
-        loading
+        loading,
       }
     : {
         data,
         setData: setStorageData,
-        loading
+        loading,
       }
 }

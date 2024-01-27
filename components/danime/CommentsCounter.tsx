@@ -15,7 +15,7 @@ export const CommentsCounter = memo(
   ({
     partId,
     showKawaiiCount,
-    getCommentsCountOption = {}
+    getCommentsCountOption = {},
   }: CommentsCounterProps) => {
     const { data } = useCommentsCount(partId, getCommentsCountOption)
     return (

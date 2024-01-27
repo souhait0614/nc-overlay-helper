@@ -1,7 +1,7 @@
 import { KAWAII_REGEXP } from "@NCOverlay/constants"
 import {
   loadCommentsNormal,
-  loadCommentsSZBH
+  loadCommentsSZBH,
 } from "@NCOverlay/content_script/utils/loadComments"
 import { NiconicoApi } from "api/niconico"
 import { Mutex } from "async-mutex"
@@ -24,7 +24,7 @@ export interface GetCommentsCountOption {
 const defaultGetCommentsCountOption = {
   useNgList: false,
   strictMatch: false,
-  szbhMethod: false
+  szbhMethod: false,
 } as const satisfies Required<GetCommentsCountOption>
 export const getCommentsCount = async (
   partId: string,
@@ -61,7 +61,7 @@ export const getCommentsCount = async (
   const info: Parameters<typeof getSearchData>[0] = {
     title,
     duration: partMeasureSecond,
-    strictMatch
+    strictMatch,
   }
   const initData: InitData[] = []
 

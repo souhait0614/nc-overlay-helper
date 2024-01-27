@@ -61,7 +61,7 @@ export const Settings = () => {
     showKawaiiCount,
     strictMatch,
     szbhMethod,
-    useNgList
+    useNgList,
   } = settings
 
   return (
@@ -72,7 +72,8 @@ export const Settings = () => {
           checked={enabledCommentCounter}
           onChange={(e) =>
             setSetting("enabledCommentCounter", e.target.checked)
-          }>
+          }
+        >
           {enabledCommentCounter && (
             <ul className={styles.listContainerChild}>
               <ListCheckbox

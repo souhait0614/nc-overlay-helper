@@ -31,12 +31,12 @@ export const useSettings = (): UseSettingsReturnValues => {
       if (settings)
         setData({
           ...settings,
-          [key]: value
+          [key]: value,
         })
       else
         setData({
           ...defaultSettings,
-          [key]: value
+          [key]: value,
         })
     },
     [setData, settings]
@@ -49,12 +49,12 @@ export const useSettings = (): UseSettingsReturnValues => {
         settings: settings ?? defaultSettings,
         setSetting,
         resetSettings,
-        loading
+        loading,
       }
     : {
         settings: undefined,
         setSetting,
         resetSettings,
-        loading
+        loading,
       }
 }

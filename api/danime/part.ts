@@ -46,7 +46,7 @@ export const part = async (partId: string): Promise<PartData | null> => {
     const res = await fetch(
       `${DANIME_PART_API}?${new URLSearchParams({
         viewType: "5",
-        partId: partId
+        partId: partId,
       })}`
     )
 

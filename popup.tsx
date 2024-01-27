@@ -20,7 +20,8 @@ const Popup = () => (
             target="_blank"
             rel="noopener external noreferrer"
             href={`${GITHUB_URL}/releases/tag/v${version}`}
-            title={`v${version}の更新内容`}>
+            title={`v${version}の更新内容`}
+          >
             v{version}
           </a>
         </small>
@@ -39,7 +40,8 @@ const Popup = () => (
         target="_blank"
         rel="noopener external noreferrer"
         title="souhait0614/nc-overlay-helper"
-        href={GITHUB_URL}>
+        href={GITHUB_URL}
+      >
         GitHub
       </a>
       <a
@@ -47,7 +49,8 @@ const Popup = () => (
         target="_blank"
         rel="noopener external noreferrer"
         title="Midra429/NCOverlay"
-        href={NC_OVERLAY_GITHUB_URL}>
+        href={NC_OVERLAY_GITHUB_URL}
+      >
         NCOverlay
       </a>
     </section>

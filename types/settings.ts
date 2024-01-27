@@ -11,5 +11,5 @@ export const defaultSettings = {
   showKawaiiCount: true,
   useNgList: false,
   strictMatch: false,
-  szbhMethod: false
+  szbhMethod: false,
 } as const satisfies Settings

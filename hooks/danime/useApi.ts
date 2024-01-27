@@ -14,7 +14,7 @@ export const useCommentsCount = (
       suspense: true,
       revalidateIfStale: false,
       revalidateOnFocus: false,
-      revalidateOnReconnect: false
+      revalidateOnReconnect: false,
     }
   )
 }
