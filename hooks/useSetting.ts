@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from "react"
-import useSWR, { useSWRConfig } from "swr"
+import useSWR from "swr"
 import { merge } from "ts-deepmerge"
 
 import { DEFAULT_SETTINGS, SETTINGS_KEY, SETTINGS_STORAGE } from "~constants"
@@ -8,13 +8,13 @@ import type { ConditionalKeys } from "type-fest"
 import type { Settings } from "~types/settings"
 import type { SupportVod } from "~types/supportVodList"
 
-export const useSettingSuspense = (
+export const useSetting = (
   vod: SupportVod,
   featureName: keyof Settings[typeof vod]
 ) => {
   type Setting = Settings[typeof vod][typeof featureName]
 
-  const { data } = useSWR(
+  const { data, mutate } = useSWR(
     SETTINGS_KEY,
     async () => {
       const settings = await SETTINGS_STORAGE.get<Settings>(SETTINGS_KEY)
@@ -27,7 +27,6 @@ export const useSettingSuspense = (
       revalidateOnReconnect: false,
     }
   )
-  const { mutate } = useSWRConfig()
   const setSetting = useCallback(
     (setSettingAction: (setting: Setting) => Partial<Setting>) => {
       const settings = merge(data, {
@@ -36,10 +35,14 @@ export const useSettingSuspense = (
         },
       }) as Settings
       SETTINGS_STORAGE.set(SETTINGS_KEY, settings)
-      mutate(SETTINGS_KEY, settings)
+      mutate(settings)
     },
     [data, featureName, mutate, vod]
   )
+
+  SETTINGS_STORAGE.watch({
+    [SETTINGS_KEY]: (settings) => mutate(settings.newValue),
+  })
 
   const toggleSetting = useMemo(() => {
     const keys = Object.entries(DEFAULT_SETTINGS[vod][featureName])

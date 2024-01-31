@@ -5,9 +5,10 @@ import {
   LoadingCommentsCounter,
 } from "components/danime/CommentsCounter"
 import css from "data-text:components/danime/CommentsCounter.scss"
-import { useSettings } from "hooks/useSettings"
 import { Suspense } from "react"
 import { ErrorBoundary } from "react-error-boundary"
+
+import { useSetting } from "~hooks/useSetting"
 
 import type {
   PlasmoCSConfig,
@@ -58,18 +59,9 @@ export const getStyle = () => {
 }
 
 export const DanimeMyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const { settings, loading } = useSettings("danime")
-  if (loading) return
-
-  const {
-    commentCounter: {
-      enabled,
-      showKawaiiCount,
-      strictMatch,
-      szbhMethod,
-      useNgList,
-    },
-  } = settings
+  const { setting } = useSetting("danime", "commentCounter")
+  const { enabled, showKawaiiCount, strictMatch, szbhMethod, useNgList } =
+    setting
   if (!enabled.myPage) return
 
   const partId = anchor?.element.getAttribute(dataPartIdAttr)

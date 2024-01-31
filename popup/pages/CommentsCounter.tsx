@@ -1,12 +1,12 @@
 import { Checkbox, CheckboxGroup, VStack } from "@chakra-ui/react"
 import { memo, useCallback, useMemo } from "react"
 
-import { useSettingSuspense } from "~hooks/useSettingSuspense"
+import { useSetting } from "~hooks/useSetting"
 import FeatureSwitch from "~popup/components/FeatureSwitch"
 import NormalSwitch from "~popup/components/NormalSwitch"
 
 const CommentsCounter = memo(() => {
-  const { setting, setSetting, toggleSetting } = useSettingSuspense(
+  const { setting, setSetting, toggleSetting } = useSetting(
     "danime",
     "commentCounter"
   )
