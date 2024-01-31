@@ -11,7 +11,7 @@ const NormalSwitch = memo(
     const id = useId()
     return (
       <Grid templateColumns="auto auto" justifyContent="space-between">
-        <FormLabel htmlFor={id} margin={0}>
+        <FormLabel htmlFor={id} margin={0} noOfLines={1}>
           {label}
         </FormLabel>
         <Switch id={id} size="md" isChecked={isChecked} onChange={onChange} />

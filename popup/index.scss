@@ -1,5 +1,7 @@
 @use "components/reset.scss";
 
-html {
-  width: 350px;
+html,
+body {
+  width: 100%;
+  min-width: 320px;
 }
