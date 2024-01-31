@@ -61,7 +61,13 @@ const FeatureSwitch = memo(
               variant="ghost"
               colorScheme="gray"
               aria-label={`${label}の詳細設定を${open ? "閉じる" : "開く"}`}
-              icon={open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+              icon={
+                open ? (
+                  <ChevronUpIcon fontSize="16px" />
+                ) : (
+                  <ChevronDownIcon fontSize="16px" />
+                )
+              }
               borderBottomRightRadius={0}
               onClick={setOpen.toggle}
             />
