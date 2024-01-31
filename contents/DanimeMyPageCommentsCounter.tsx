@@ -58,17 +58,19 @@ export const getStyle = () => {
 }
 
 export const DanimeMyPageCommentsCounter = ({ anchor }: PlasmoCSUIProps) => {
-  const { settings, loading } = useSettings()
+  const { settings, loading } = useSettings("danime")
   if (loading) return
 
   const {
-    enabledCommentCounter,
-    showKawaiiCount,
-    useNgList,
-    strictMatch,
-    szbhMethod,
+    commentCounter: {
+      enabled,
+      showKawaiiCount,
+      strictMatch,
+      szbhMethod,
+      useNgList,
+    },
   } = settings
-  if (!enabledCommentCounter) return
+  if (!enabled.myPage) return
 
   const partId = anchor?.element.getAttribute(dataPartIdAttr)
   if (!partId) return <ErrorCommentsCounter />

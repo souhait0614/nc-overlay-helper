@@ -1,5 +1,6 @@
-import { Storage } from "@plasmohq/storage"
-import { useEffect, useMemo, useState, useCallback } from "react"
+import { useEffect, useState, useCallback } from "react"
+
+import { SETTINGS_STORAGE } from "~constants"
 
 import type { StorageCallbackMap } from "@plasmohq/storage"
 import type { Dispatch, SetStateAction } from "react"
@@ -20,7 +21,6 @@ export type UseStorageReturnValues<T> =
 export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
   const [data, setData] = useState<T | undefined>(undefined)
   const [loading, setLoading] = useState(true)
-  const storage = useMemo(() => new Storage(), [])
 
   const setStorageData = useCallback<SetDataDispatch<T>>(
     (setStateAction) => {
@@ -29,13 +29,13 @@ export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
           setStateAction as (prevState: T | undefined) => T | undefined
         )(data)
         setData(result)
-        storage.set(key, result)
+        SETTINGS_STORAGE.set(key, result)
       } else {
         setData(setStateAction)
-        storage.set(key, setStateAction)
+        SETTINGS_STORAGE.set(key, setStateAction)
       }
     },
-    [data, key, storage]
+    [data, key]
   )
 
   useEffect(() => {
@@ -45,15 +45,15 @@ export const useStorage = <T>(key: string): UseStorageReturnValues<T> => {
         setLoading(false)
       },
     }
-    storage.watch(callbackMap)
-    storage.get<T>(key).then((value) => {
+    SETTINGS_STORAGE.watch(callbackMap)
+    SETTINGS_STORAGE.get<T>(key).then((value) => {
       setData(value)
       setLoading(false)
     })
     return () => {
-      storage.unwatch(callbackMap)
+      SETTINGS_STORAGE.unwatch(callbackMap)
     }
-  }, [key, storage])
+  }, [key])
 
   return loading
     ? {

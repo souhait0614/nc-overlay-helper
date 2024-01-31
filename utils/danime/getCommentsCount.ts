@@ -5,8 +5,8 @@ import {
 } from "@NCOverlay/content_script/utils/loadComments"
 import { NiconicoApi } from "api/niconico"
 import { Mutex } from "async-mutex"
-import deepmerge from "deepmerge"
 import { decodeHTML } from "entities"
+import { merge } from "ts-deepmerge"
 import { Logger } from "utils/logger"
 
 import { DAnimeApi } from "~api/danime"
@@ -30,10 +30,10 @@ export const getCommentsCount = async (
   partId: string,
   options: GetCommentsCountOption = {}
 ) => {
-  const { useNgList, strictMatch, szbhMethod } = deepmerge(
+  const { useNgList, strictMatch, szbhMethod } = merge(
     defaultGetCommentsCountOption,
     options
-  )
+  ) as Required<GetCommentsCountOption>
 
   await mutex.waitForUnlock()
   const release = await mutex.acquire()

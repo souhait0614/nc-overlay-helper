@@ -1,15 +1,16 @@
-export interface Settings {
-  enabledCommentCounter: boolean
-  showKawaiiCount: boolean
-  useNgList: boolean
-  strictMatch: boolean
-  szbhMethod: boolean
-}
+import type { SUPPORT_VOD } from "~constants"
 
-export const defaultSettings = {
-  enabledCommentCounter: true,
-  showKawaiiCount: true,
-  useNgList: false,
-  strictMatch: false,
-  szbhMethod: false,
-} as const satisfies Settings
+export type Settings = {
+  [SUPPORT_VOD.danime]: {
+    commentCounter: {
+      enabled: {
+        myPage: boolean
+        channel: boolean
+      }
+      showKawaiiCount: boolean
+      useNgList: boolean
+      strictMatch: boolean
+      szbhMethod: boolean
+    }
+  }
+}

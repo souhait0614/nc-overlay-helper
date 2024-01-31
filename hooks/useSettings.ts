@@ -1,43 +1,74 @@
-import deepmerge from "deepmerge"
 import { useCallback, useMemo } from "react"
-import { defaultSettings } from "types/settings"
+import { merge } from "ts-deepmerge"
+
+import { DEFAULT_SETTINGS, SETTINGS_KEY } from "~constants"
 
 import { useStorage } from "./useStorage"
 
 import type { Settings } from "types/settings"
+import type { SupportVod } from "~types/supportVodList"
 
 export type UseSettingsReturnValues =
   | {
-      settings: Settings
-      setSetting: (key: keyof Settings, value: boolean) => void
+      settings: Settings[SupportVod]
+      setSetting: (
+        vod: SupportVod,
+        key: keyof Settings[typeof vod],
+        value: Settings[typeof vod][typeof key]
+      ) => void
       resetSettings: () => void
       loading: false
     }
   | {
       settings: undefined
-      setSetting: (key: keyof Settings, value: boolean) => void
+      setSetting: (
+        vod: SupportVod,
+        key: keyof Settings[typeof vod],
+        value: Settings[typeof vod][typeof key]
+      ) => void
       resetSettings: () => void
       loading: true
     }
-export const useSettings = (): UseSettingsReturnValues => {
-  const { data, setData, loading } = useStorage<Settings>("settings")
+export const useSettings = (vod: SupportVod): UseSettingsReturnValues => {
+  const { data, setData, loading } = useStorage<Settings>(SETTINGS_KEY)
 
   const settings = useMemo(
-    () => (!loading ? deepmerge(defaultSettings, data ?? {}) : undefined),
+    () => (!loading ? merge(DEFAULT_SETTINGS, data ?? {}) : undefined),
     [loading, data]
   )
   const setSetting = useCallback(
-    (key: keyof Settings, value: Settings[typeof key]) => {
-      if (settings)
+    (
+      vod: SupportVod,
+      key: keyof Settings[typeof vod],
+      value: Settings[typeof vod][typeof key]
+    ) => {
+      if (!settings) {
+        setData(
+          merge(DEFAULT_SETTINGS, {
+            [vod]: {
+              [key]: value,
+            },
+          })
+        )
+        return
+      }
+      if (!settings[vod]) {
         setData({
           ...settings,
-          [key]: value,
+          [vod]: {
+            ...DEFAULT_SETTINGS[vod],
+            [key]: value,
+          },
         })
-      else
-        setData({
-          ...defaultSettings,
+        return
+      }
+      setData({
+        ...settings,
+        [vod]: {
+          ...settings[vod],
           [key]: value,
-        })
+        },
+      })
     },
     [setData, settings]
   )
@@ -46,7 +77,7 @@ export const useSettings = (): UseSettingsReturnValues => {
   }, [setData])
   return !loading
     ? {
-        settings: settings ?? defaultSettings,
+        settings: settings?.[vod] ?? DEFAULT_SETTINGS[vod],
         setSetting,
         resetSettings,
         loading,
