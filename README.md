@@ -22,7 +22,7 @@ NCOverlayHelper単体でも使用できると思いますが、[NCOverlay](https
 
 ### 一覧画面でのコメント数表示
 
-<img src="https://github.com/souhait0614/nc-overlay-helper/assets/62732828/5645d6d9-54f8-45b4-ad09-0a967092c031" height="150px" alt="コメント数表示例">
+<img src="https://github.com/souhait0614/nc-overlay-helper/assets/62732828/d169db9d-a06c-46cd-a600-20fa0a4b8cb5" height="150px" alt="コメント数表示例">
 
 動画情報にコメント数を表示します。<br>
 [NCOverlay](https://github.com/Midra429/NCOverlay)のコメント取得処理を使用しているため、コメント専用動画のカウントやニコニコのNG設定の使用もできます。(設定の詳細は[ポップアップ](#ポップアップ)へ)
