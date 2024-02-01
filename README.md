@@ -55,6 +55,36 @@ NCOverlayHelperの各機能の設定を行えます。<br>
   - Misskey: [@souhait@submarin.online](https://submarin.online/@souhait)
   - X (Twitter): [@ElectronicsBot](https://x.com/ElectronicsBot)
 
+## 開発
+
+### パッケージのインストール
+
+```sh
+pnpm i
+```
+
+### 開発サーバー起動
+
+```sh
+pnpm dev
+```
+
+[Plasmoのドキュメント](https://docs.plasmo.com/framework/workflows/dev#loading-the-extension)に従ってブラウザに拡張機能を導入してください。
+
+### ビルド
+
+```sh
+pnpm build
+```
+
+以下のように出力されます。
+
+```plaintext
+build
+├── NCOverlayHelper_v{version}-chrome.zip
+└── NCOverlayHelper_v{version}-firefox.zip
+```
+
 ## ライセンス
 
 当ライセンスは[MIT](LICENSE)ライセンスの規約に基づいて付与されています。
