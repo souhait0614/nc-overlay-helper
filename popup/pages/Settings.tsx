@@ -20,7 +20,7 @@ const Settings = memo(() => {
     if (confirm("設定をリセットしますか？")) {
       SETTINGS_STORAGE.set(SETTINGS_KEY, null)
       mutate(SETTINGS_KEY, null)
-      setColorMode(undefined)
+      setColorMode("dark")
     }
   }, [mutate, setColorMode])
   return (

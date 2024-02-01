@@ -27,8 +27,7 @@ import "./index.scss"
 const theme = extendBaseTheme(
   {
     config: {
-      initialColorMode: "system",
-      useSystemColorMode: true,
+      initialColorMode: "dark",
     },
     fontSizes: {
       sm: 10,
