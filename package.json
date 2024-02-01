@@ -1,7 +1,7 @@
 {
   "name": "nc-overlay-helper",
   "displayName": "NCOverlayHelper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "NCOverlay本体に追加するまでもないけど個人的にほしい機能を足す拡張機能",
   "author": "souhait <souhait.0614@gmail.com>",
   "scripts": {
