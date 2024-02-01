@@ -3,9 +3,9 @@ import {
   Card,
   Checkbox,
   IconButton,
-  useBoolean,
   Box,
   Divider,
+  useDisclosure,
 } from "@chakra-ui/react"
 import { memo } from "react"
 
@@ -36,7 +36,8 @@ const FeatureSwitch = memo(
     expand = false,
     children,
   }: FeatureSwitchProps) => {
-    const [open, setOpen] = useBoolean()
+    const { isOpen, onToggle } = useDisclosure()
+
     return (
       <Card variant="filled" width="100%" overflow="hidden">
         <Box
@@ -60,20 +61,20 @@ const FeatureSwitch = memo(
               size="md"
               variant="ghost"
               colorScheme="gray"
-              aria-label={`${label}の詳細設定を${open ? "閉じる" : "開く"}`}
+              aria-label={`${label}の詳細設定を${isOpen ? "閉じる" : "開く"}`}
               icon={
-                open ? (
+                isOpen ? (
                   <ChevronUpIcon fontSize="16px" />
                 ) : (
                   <ChevronDownIcon fontSize="16px" />
                 )
               }
               borderBottomRightRadius={0}
-              onClick={setOpen.toggle}
+              onClick={onToggle}
             />
           )}
         </Box>
-        {expand && open && (
+        {expand && isOpen && (
           <>
             <Divider />
             <Box p={3}>{children}</Box>
