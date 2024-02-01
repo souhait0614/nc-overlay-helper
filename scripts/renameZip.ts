@@ -5,7 +5,7 @@ import { displayName, version } from "package.json"
 
 const zipFileNames = {
   chrome: "chrome-mv3-prod.zip",
-  filefox: "firefox-mv2-prod.zip",
+  firefox: "firefox-mv2-prod.zip",
 } as const
 
 const outputDir = "./build"
