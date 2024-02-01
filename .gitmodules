@@ -1,3 +1,4 @@
 [submodule "NCOverlay"]
 	path = NCOverlay
 	url = https://github.com/souhait0614/NCOverlayCustom.git
+	branch = nc-overlay-helper
