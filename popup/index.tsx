@@ -12,6 +12,7 @@ import {
   FormLabel,
   Heading,
   Link,
+  Progress,
   Select,
   Switch,
   Tabs,
@@ -44,6 +45,7 @@ const theme = extendBaseTheme(
       Divider,
       Heading,
       Link,
+      Progress,
     },
   } as const satisfies ThemeOverride,
   withDefaultColorScheme({

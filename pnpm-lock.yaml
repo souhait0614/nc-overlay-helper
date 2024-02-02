@@ -59,6 +59,9 @@ importers:
       type-fest:
         specifier: ^4.10.2
         version: 4.10.2
+      use-long-press:
+        specifier: ^3.2.0
+        version: 3.2.0(react@18.2.0)
       webextension-polyfill:
         specifier: ^0.10.0
         version: 0.10.0
@@ -9570,6 +9573,14 @@ packages:
       '@types/react': 18.2.50
       react: 18.2.0
       tslib: 2.6.2
+    dev: false
+
+  /use-long-press@3.2.0(react@18.2.0):
+    resolution: {integrity: sha512-uq5o2qFR1VRjHn8Of7Fl344/AGvgk7C5Mcb4aSb1ZRVp6PkgdXJJLdRrlSTJQVkkQcDuqFbFc3mDX4COg7mRTA==}
+    peerDependencies:
+      react: '>=16.8.0'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.50)(react@18.2.0):
