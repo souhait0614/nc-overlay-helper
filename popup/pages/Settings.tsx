@@ -11,14 +11,15 @@ import {
 import { memo, useCallback } from "react"
 import { useSWRConfig } from "swr"
 
-import { SETTINGS_KEY, SETTINGS_STORAGE } from "~constants"
+import { SETTINGS_KEY } from "~constants"
+import { settingsStorage } from "~utils/settingsStorage"
 
 const Settings = memo(() => {
   const { colorMode, setColorMode } = useColorMode()
   const { mutate } = useSWRConfig()
   const handleResetSettings = useCallback(() => {
     if (confirm("設定をリセットしますか？")) {
-      SETTINGS_STORAGE.set(SETTINGS_KEY, null)
+      settingsStorage.clear()
       mutate(SETTINGS_KEY, null)
       setColorMode("dark")
     }

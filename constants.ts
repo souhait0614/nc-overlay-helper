@@ -1,5 +1,3 @@
-import { Storage } from "@plasmohq/storage"
-
 import type { Settings } from "~types/settings"
 import type { SupportVodList } from "~types/supportVodList"
 
@@ -26,7 +24,6 @@ export const DEFAULT_SETTINGS = {
     },
   },
 } as const satisfies Settings
-export const SETTINGS_STORAGE = new Storage()
 
 /** サポートしているVOD */
 export const SUPPORT_VOD = {
