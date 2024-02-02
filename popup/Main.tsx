@@ -50,7 +50,7 @@ export const Main = memo(() => {
           </SuspenseLoading>
         </TabPanel>
         <TabPanel>
-          <SuspenseLoading height="107px">
+          <SuspenseLoading height="139px">
             <Settings />
           </SuspenseLoading>
         </TabPanel>
