@@ -2,8 +2,10 @@
 
 [![GitHub Release](https://img.shields.io/github/v/release/souhait0614/nc-overlay-helper?label=Releases)](https://github.com/souhait0614/nc-overlay-helper/releases)
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/lkhmoihbofhalomfbejikpapobebjjcj?label=Chrome%20Web%20Store)](https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj)
+[![Firefox Add-ons](https://img.shields.io/amo/v/ncoverlayhelper?label=Firefox%20Add-ons)](https://addons.mozilla.org/ja/firefox/addon/ncoverlayhelper/)
 
 [<img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" height="60px" alt="Available in the Chrome Web Store">](https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj)
+[<img src="https://blog.mozilla.org/addons/files/2020/04/get-the-addon-fx-apr-2020.svg" height="60px" alt="Get the add-on">](https://addons.mozilla.org/ja/firefox/addon/ncoverlayhelper/)
 
 ## 概要
 
@@ -47,6 +49,10 @@ NCOverlayHelperの各機能の設定を行えます。<br>
 ### Chrome Web Store
 
 <https://chromewebstore.google.com/detail/lkhmoihbofhalomfbejikpapobebjjcj>
+
+### Firefox Add-ons
+
+<https://addons.mozilla.org/ja/firefox/addon/ncoverlayhelper/>
 
 ## 不具合報告・機能提案など
 
