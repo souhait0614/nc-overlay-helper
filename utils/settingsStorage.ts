@@ -1,6 +1,6 @@
 import { Storage } from "@plasmohq/storage"
 
-import { SETTINGS_KEY } from "~constants"
+import { DEFAULT_SETTINGS, SETTINGS_KEY } from "~constants"
 
 import type { StorageWatchCallback } from "@plasmohq/storage"
 import type { Settings } from "~types/settings"
@@ -8,7 +8,7 @@ import type { Settings } from "~types/settings"
 const storage = new Storage()
 const get = () => storage.get<Settings>(SETTINGS_KEY)
 const set = (settings: Settings) => storage.set(SETTINGS_KEY, settings)
-const clear = () => storage.set(SETTINGS_KEY, null)
+const clear = () => storage.set(SETTINGS_KEY, DEFAULT_SETTINGS)
 const watch = (callback: StorageWatchCallback) =>
   storage.watch({
     [SETTINGS_KEY]: callback,

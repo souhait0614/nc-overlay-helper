@@ -11,7 +11,7 @@ import {
 import { memo, useCallback } from "react"
 import { useSWRConfig } from "swr"
 
-import { SETTINGS_KEY } from "~constants"
+import { DEFAULT_SETTINGS, SETTINGS_KEY } from "~constants"
 import { useNCOverlayHelperSetting } from "~hooks/useSetting"
 import NormalSwitch from "~popup/components/NormalSwitch"
 import { settingsStorage } from "~utils/settingsStorage"
@@ -23,7 +23,7 @@ const Settings = memo(() => {
   const handleResetSettings = useCallback(() => {
     if (confirm("設定をリセットしますか？")) {
       settingsStorage.clear()
-      mutate(SETTINGS_KEY, null)
+      mutate(SETTINGS_KEY, DEFAULT_SETTINGS)
       setColorMode("dark")
     }
   }, [mutate, setColorMode])
