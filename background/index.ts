@@ -1,6 +1,6 @@
 import { DEFAULT_SETTINGS, GITHUB_URL } from "~constants"
 import { settingsStorage } from "~utils/settingsStorage"
-import { webExt } from "~utils/webext"
+import { webExt } from "~utils/webExt"
 
 import { version } from "../package.json"
 
