@@ -1,10 +1,11 @@
-import { useCallback, useMemo } from "react"
+import { useCallback, useEffect, useMemo } from "react"
 import useSWR from "swr"
 import { merge } from "ts-deepmerge"
 
 import { DEFAULT_SETTINGS, SETTINGS_KEY } from "~constants"
 import { settingsStorage } from "~utils/settingsStorage"
 
+import type { StorageWatchCallback } from "@plasmohq/storage"
 import type { ConditionalKeys } from "type-fest"
 import type { Settings } from "~types/settings"
 import type { SupportVod } from "~types/supportVodList"
@@ -38,7 +39,14 @@ export const useSetting = (
     [data, featureName, mutate, vod]
   )
 
-  settingsStorage.watch((settings) => mutate(settings.newValue))
+  useEffect(() => {
+    const callback: StorageWatchCallback = (settings) =>
+      mutate(settings.newValue)
+    settingsStorage.watch(callback)
+    return () => {
+      settingsStorage.unwatch(callback)
+    }
+  }, [mutate])
 
   const toggleSetting = useMemo(() => {
     const keys = Object.entries(DEFAULT_SETTINGS[vod][featureName])
