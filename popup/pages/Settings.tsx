@@ -12,9 +12,12 @@ import { memo, useCallback } from "react"
 import { useSWRConfig } from "swr"
 
 import { SETTINGS_KEY } from "~constants"
+import { useNCOverlayHelperSetting } from "~hooks/useSetting"
+import NormalSwitch from "~popup/components/NormalSwitch"
 import { settingsStorage } from "~utils/settingsStorage"
 
 const Settings = memo(() => {
+  const { setting, toggleSetting } = useNCOverlayHelperSetting()
   const { colorMode, setColorMode } = useColorMode()
   const { mutate } = useSWRConfig()
   const handleResetSettings = useCallback(() => {
@@ -25,8 +28,8 @@ const Settings = memo(() => {
     }
   }, [mutate, setColorMode])
   return (
-    <VStack align="normal">
-      <FormControl>
+    <VStack align="normal" spacing={2}>
+      <FormControl marginBottom={1}>
         <FormLabel>テーマ</FormLabel>
         <Select
           value={colorMode}
@@ -36,6 +39,11 @@ const Settings = memo(() => {
           <option value="dark">ダーク</option>
         </Select>
       </FormControl>
+      <NormalSwitch
+        isChecked={setting.showChangelog}
+        onChange={toggleSetting.showChangelog}
+        label="アップデート後に更新内容を表示"
+      />
       <Divider />
       <Button
         colorScheme="red"

@@ -59,6 +59,9 @@ importers:
       type-fest:
         specifier: ^4.10.2
         version: 4.10.2
+      webextension-polyfill:
+        specifier: ^0.10.0
+        version: 0.10.0
     devDependencies:
       '@types/chrome':
         specifier: ^0.0.259
@@ -72,6 +75,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.18
         version: 18.2.18
+      '@types/webextension-polyfill':
+        specifier: ^0.10.7
+        version: 0.10.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.20.0
         version: 6.20.0(@typescript-eslint/parser@6.20.0)(eslint@8.56.0)(typescript@5.3.3)

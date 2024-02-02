@@ -13,4 +13,7 @@ export type Settings = {
       szbhMethod: boolean
     }
   }
+  ncoverlayhelper: {
+    showChangelog: boolean
+  }
 }

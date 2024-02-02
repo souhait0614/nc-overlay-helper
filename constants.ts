@@ -23,6 +23,9 @@ export const DEFAULT_SETTINGS = {
       szbhMethod: false,
     },
   },
+  ncoverlayhelper: {
+    showChangelog: true,
+  },
 } as const satisfies Settings
 
 /** サポートしているVOD */

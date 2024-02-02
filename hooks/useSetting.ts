@@ -68,3 +68,54 @@ export const useSetting = (
 
   return { setting, setSetting, toggleSetting }
 }
+
+type NCOverlayHelperSettings = Settings["ncoverlayhelper"]
+
+export const useNCOverlayHelperSetting = () => {
+  const { data, mutate } = useSWR(
+    SETTINGS_KEY,
+    async () => (await settingsStorage.get()) || DEFAULT_SETTINGS,
+    {
+      suspense: true,
+      revalidateIfStale: false,
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+    }
+  )
+  const setSetting = useCallback(
+    (
+      setSettingAction: (
+        setting: NCOverlayHelperSettings
+      ) => Partial<NCOverlayHelperSettings>
+    ) => {
+      const settings = merge(data, {
+        ncoverlayhelper: setSettingAction(data.ncoverlayhelper),
+      }) as Settings
+      settingsStorage.set(settings)
+      mutate(settings)
+    },
+    [data, mutate]
+  )
+
+  settingsStorage.watch((settings) => mutate(settings.newValue))
+
+  const toggleSetting = useMemo(() => {
+    const keys = Object.entries(DEFAULT_SETTINGS.ncoverlayhelper)
+      .filter(([, v]) => typeof v === "boolean")
+      .map(([k]) => k as ConditionalKeys<NCOverlayHelperSettings, boolean>)
+    return keys.reduce(
+      (acc, key) => {
+        acc[key] = () => setSetting((setting) => ({ [key]: !setting[key] }))
+        return acc
+      },
+      {} as Record<
+        ConditionalKeys<NCOverlayHelperSettings, boolean>,
+        () => void
+      >
+    )
+  }, [setSetting])
+
+  const setting = useMemo(() => data.ncoverlayhelper, [data])
+
+  return { setting, setSetting, toggleSetting }
+}

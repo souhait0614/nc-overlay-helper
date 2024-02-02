@@ -13,5 +13,16 @@ const watch = (callback: StorageWatchCallback) =>
   storage.watch({
     [SETTINGS_KEY]: callback,
   })
+const unwatch = (callback: StorageWatchCallback) =>
+  storage.unwatch({
+    [SETTINGS_KEY]: callback,
+  })
 
-export const settingsStorage = { get, set, watch, clear, storage } as const
+export const settingsStorage = {
+  get,
+  set,
+  watch,
+  unwatch,
+  clear,
+  storage,
+} as const
