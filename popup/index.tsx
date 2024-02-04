@@ -6,6 +6,7 @@ import {
   withDefaultSize,
 } from "@chakra-ui/react"
 import {
+  Alert,
   Button,
   Checkbox,
   Divider,
@@ -46,6 +47,7 @@ const theme = extendBaseTheme(
       Heading,
       Link,
       Progress,
+      Alert,
     },
   } as const satisfies ThemeOverride,
   withDefaultColorScheme({
