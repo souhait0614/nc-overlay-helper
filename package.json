@@ -65,7 +65,7 @@
       },
       "gecko_android": {
         "id": "ncoverlayhelper@souhait.me",
-        "strict_min_version": "113.0"
+        "strict_min_version": "120.0"
       }
     }
   },
