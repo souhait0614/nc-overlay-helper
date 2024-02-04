@@ -11,6 +11,7 @@ export const GITHUB_URL = "https://github.com/souhait0614/nc-overlay-helper"
 /** 設定 */
 export const SETTINGS_KEY = "settings"
 export const DEFAULT_SETTINGS = {
+  version: 1,
   danime: {
     commentCounter: {
       enabled: {

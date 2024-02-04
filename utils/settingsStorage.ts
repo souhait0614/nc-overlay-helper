@@ -6,8 +6,8 @@ import type { StorageWatchCallback } from "@plasmohq/storage"
 import type { Settings } from "~types/settings"
 
 const storage = new Storage()
-const get = () => storage.get<Settings>(SETTINGS_KEY)
-const set = (settings: Settings) => storage.set(SETTINGS_KEY, settings)
+const get = <T = Settings>() => storage.get<T>(SETTINGS_KEY)
+const set = <T = Settings>(settings: T) => storage.set(SETTINGS_KEY, settings)
 const clear = () => storage.set(SETTINGS_KEY, DEFAULT_SETTINGS)
 const watch = (callback: StorageWatchCallback) =>
   storage.watch({

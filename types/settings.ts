@@ -1,6 +1,7 @@
 import type { SUPPORT_VOD } from "~constants"
 
 export type Settings = {
+  version: 1
   [SUPPORT_VOD.danime]: {
     commentCounter: {
       enabled: {
