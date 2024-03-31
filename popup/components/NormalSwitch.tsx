@@ -10,7 +10,12 @@ const NormalSwitch = memo(
   ({ label, isChecked, onChange }: NormalSwitchProps) => {
     const id = useId()
     return (
-      <Grid templateColumns="auto auto" justifyContent="space-between">
+      <Grid
+        templateColumns="auto auto"
+        justifyContent="space-between"
+        alignItems="center"
+        gap={2}
+      >
         <FormLabel htmlFor={id} margin={0} noOfLines={1}>
           {label}
         </FormLabel>

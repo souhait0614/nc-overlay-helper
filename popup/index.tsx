@@ -3,7 +3,6 @@ import {
   ColorModeScript,
   extendBaseTheme,
   withDefaultColorScheme,
-  withDefaultSize,
 } from "@chakra-ui/react"
 import {
   Alert,
@@ -32,8 +31,7 @@ const theme = extendBaseTheme(
       initialColorMode: "dark",
     },
     fontSizes: {
-      sm: 10,
-      md: 14,
+      md: "13.2px",
     },
     components: {
       Checkbox,
@@ -52,9 +50,6 @@ const theme = extendBaseTheme(
   } as const satisfies ThemeOverride,
   withDefaultColorScheme({
     colorScheme: "orange",
-  }),
-  withDefaultSize({
-    size: "sm",
   })
 )
 
